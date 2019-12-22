@@ -21,6 +21,14 @@ def transliterate():
     best_transliterated_list = trn.transform(word, k_best=5)
     return {"transliteration": best_transliterated_list}
 
+
+@cross_origin()
+@app.route('/lookup')
+def lookup():
+    word = request.args.get('word', default='congress', type=str)
+    return {"translation": "asdas"}
+
+
 if __name__ == "__main__":
     app.run()
 
