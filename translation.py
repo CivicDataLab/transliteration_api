@@ -11,5 +11,5 @@ class TranslationLookup:
 
     def lookup_from_glossory(self, text):
         print(self.lookup_dict)
-        return self.lookup_dict.get(text, "not_found")
+        return self.lookup_dict.get(text.strip().lower(), "not_found")
 
