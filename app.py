@@ -3,6 +3,7 @@ from flask import Flask, request
 from indictrans import Transliterator
 from flask_cors import CORS
 from flask_cors import cross_origin
+from translation import TranslationLookup
 
 app = Flask(__name__)
 CORS(app)
@@ -26,7 +27,7 @@ def transliterate():
 @app.route('/lookup')
 def lookup():
     word = request.args.get('word', default='congress', type=str)
-    return {"translation": "asdas"}
+    return {"translation": TranslationLookup().lookup_from_glossory(word)}
 
 
 if __name__ == "__main__":
