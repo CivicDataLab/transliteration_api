@@ -5,8 +5,9 @@ class TranslationLookup:
     lookup_dict = {}
 
     def __init__(self):
-        self.lookup_dict = json.load(open('state_legislature.json', 'r'))[0]
-        self.lookup_dict = { k.strip():v.strip() for k, v in self.lookup_dict.items()}
+        glossory = json.load(open('state_legislature.json', 'r'))
+        for glossory_item in glossory:
+            self.lookup_dict.update({ k.strip().lower():v.strip().lower() for k, v in glossory_item.items()})
 
     def lookup_from_glossory(self, text):
         print(self.lookup_dict)
