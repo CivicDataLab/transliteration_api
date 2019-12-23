@@ -7,7 +7,7 @@ from translation import TranslationLookup
 
 app = Flask(__name__)
 CORS(app)
-
+lookup_object = TranslationLookup()
 
 @app.route('/')
 def hello_world():
@@ -27,7 +27,7 @@ def transliterate():
 @app.route('/lookup')
 def lookup():
     word = request.args.get('word', default='congress', type=str)
-    return {"translation": TranslationLookup().lookup_from_glossory(word)}
+    return {"translation": lookup_object.lookup_from_glossory(word)}
 
 
 if __name__ == "__main__":
